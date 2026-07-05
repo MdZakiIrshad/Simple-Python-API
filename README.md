@@ -10,6 +10,7 @@ It provides basic API endpoints for managing items and includes a simple fronten
 - Main entry file: main.py
 - Dependency file: requirements.txt
 - Container support: Dockerfile
+- Kubernetes manifests: k8s/
 
 ## Features
 
@@ -31,6 +32,7 @@ It provides basic API endpoints for managing items and includes a simple fronten
    ```bash
    docker build -t python-backend-image .
    ```
+8. Added Kubernetes deployment and service manifests in the k8s folder.
 
 ## How to Run Locally
 
@@ -71,6 +73,29 @@ It provides basic API endpoints for managing items and includes a simple fronten
    ```text
    http://localhost:8000
    ```
+
+## Kubernetes Deployment
+
+1. Apply the deployment:
+
+   ```bash
+   kubectl apply -f k8s/deployment.yaml
+   ```
+
+2. Apply the service:
+
+   ```bash
+   kubectl apply -f k8s/service.yaml
+   ```
+
+3. Check the status:
+
+   ```bash
+   kubectl get pods
+   kubectl get svc
+   ```
+
+4. Access the app through the NodePort service.
 
 ## Useful Commands
 
