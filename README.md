@@ -11,6 +11,7 @@ It provides basic API endpoints for managing items and includes a simple fronten
 - Dependency file: requirements.txt
 - Container support: Dockerfile
 - Kubernetes manifests: k8s/
+- Helm chart: helm/python-backend/
 
 ## Features
 
@@ -18,6 +19,8 @@ It provides basic API endpoints for managing items and includes a simple fronten
 - Get a single item by ID
 - Create a new item
 - Update an existing item
+- Containerize the app with Docker
+- Deploy the app with Kubernetes and Helm
 
 ## Steps Followed
 
@@ -28,11 +31,13 @@ It provides basic API endpoints for managing items and includes a simple fronten
 5. Added CRUD-style endpoints for items.
 6. Created a Dockerfile to containerize the application.
 7. Built a Docker image using:
-   
+
    ```bash
    docker build -t python-backend-image .
    ```
 8. Added Kubernetes deployment and service manifests in the k8s folder.
+9. Added a Helm chart under helm/python-backend for deployment management.
+10. Tested deployment locally using Minikube and exposed the service.
 
 ## How to Run Locally
 
@@ -97,6 +102,32 @@ It provides basic API endpoints for managing items and includes a simple fronten
 
 4. Access the app through the NodePort service.
 
+## Helm Deployment
+
+1. Lint the Helm chart:
+
+   ```bash
+   helm lint helm/python-backend
+   ```
+
+2. Install the release:
+
+   ```bash
+   helm install my-release helm/python-backend
+   ```
+
+3. Expose the service in Minikube:
+
+   ```bash
+   minikube service my-release-python-backend-service --url
+   ```
+
+4. Upgrade the release later if needed:
+
+   ```bash
+   helm upgrade my-release helm/python-backend
+   ```
+
 ## Useful Commands
 
 - Stop the container:
@@ -115,4 +146,10 @@ It provides basic API endpoints for managing items and includes a simple fronten
 
   ```bash
   docker ps
+  ```
+
+- Check running pods:
+
+  ```bash
+  kubectl get pods
   ```

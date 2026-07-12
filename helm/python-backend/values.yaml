@@ -1,0 +1,10 @@
+replicaCount: 1
+
+image:
+  repository: mdzaki11211/python-backend-image
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 8000
